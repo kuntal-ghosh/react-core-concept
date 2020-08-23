@@ -1,0 +1,25 @@
+.header {
+    text-align: center;
+
+    img {
+        width: 200px;
+
+    }
+
+
+    &_text {
+        color: red;
+    }
+
+    &_nav {
+        background-color: black;
+        padding: 20px;
+
+        a {
+            text-decoration: none;
+            padding: 20px;
+            color: white;
+
+        }
+    }
+}
