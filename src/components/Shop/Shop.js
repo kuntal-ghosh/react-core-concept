@@ -8,16 +8,34 @@ const Shop = () => {
   console.log(fakeData);
   let first10 = fakeData.slice(0, 10);
   const [firstTenProducts, setFirstTenProducts] = useState(first10);
+  const [cartProducts, setCartProducts] = useState([]);
+  function handleButton(product) {
+    console.log(product);
+    const newCart = [...cartProducts, product];
+    setCartProducts(newCart);
+    console.log(cartProducts);
+  }
+  let cart;
+  if (cartProducts !== undefined && cartProducts.length > 0) {
+    cart = cartProducts.map((product) => (
+      <Product key={product.key} product={product}></Product>
+    ));
+  }
+
   return (
     <Fragment>
       <div className={Styles.shop_container}>
         <div className={Styles.shop_container_left}></div>
         <div className={Styles.shop_container_center}>
           {firstTenProducts.map((product) => (
-            <Product key={product.key} product={product}></Product>
+            <Product
+              key={product.key}
+              product={product}
+              handleButton={handleButton}
+            ></Product>
           ))}
         </div>
-        <div className={Styles.shop_container_right}>dsvsd</div>
+        <div className={Styles.shop_container_right}>{cart}</div>
       </div>
     </Fragment>
   );

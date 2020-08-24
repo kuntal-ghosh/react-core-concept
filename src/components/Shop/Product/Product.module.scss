@@ -27,8 +27,15 @@
             &_price {}
 
             &_button {
-                padding: 3px 40px;
+                padding: 5px 40px;
                 margin-top: 20px;
+                background-color: goldenrod;
+                border: none;
+                border-radius: 5px;
+            }
+
+            &_button:hover {
+                cursor: pointer;
             }
         }
 

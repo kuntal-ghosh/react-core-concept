@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./Product.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
 const Product = (props) => {
   const product = props.product;
   return (
@@ -19,14 +22,16 @@ const Product = (props) => {
                 ${product.price}
               </p>
               <div>only {product.stock} is available in stock-order soon</div>
-              <button className={styles.product_description_detail_button}>
+              <button
+                className={styles.product_description_detail_button}
+                onClick={() => props.handleButton(props.product)}
+              >
+                <FontAwesomeIcon icon={faShoppingCart} />
                 add to cart
               </button>
             </div>
             <div className={styles.product_description_ratings}>
-                <div className={styles.product_description_ratings_star}>
-                   
-                </div>
+              <div className={styles.product_description_ratings_star}></div>
             </div>
           </div>
         </div>
