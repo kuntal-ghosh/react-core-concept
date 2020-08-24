@@ -1,0 +1,43 @@
+.product {
+    display: flex;
+    margin-right: 5px;
+    // padding-right: 20px;
+    padding: 20px 0px;
+    border-bottom: 1px dotted black;
+
+    &_header {
+        padding-top: 20px;
+        margin-left: 10px;
+
+        &_seller {
+            margin-top: 10px;
+        }
+    }
+
+
+    &_description {
+        display: flex;
+        margin-top: 20px;
+
+
+        &_detail {
+            flex-basis: 50%;
+            // flex: 1;
+
+            &_price {}
+
+            &_button {
+                padding: 3px 40px;
+                margin-top: 20px;
+            }
+        }
+
+        &_ratings {
+            flex-basis: 50%;
+            // flex: 1;
+
+        }
+
+
+    }
+}
