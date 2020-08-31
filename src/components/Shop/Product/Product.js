@@ -5,6 +5,12 @@ import { faCoffee, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Product = (props) => {
   const product = props.product;
+  let warning;
+  let buttonText = "add to cart";
+  if (product.stock <= 0) {
+    warning = styles.product_description_warning;
+    buttonText = "Out of Stock";
+  }
   return (
     <div>
       <div className={styles.product}>
@@ -21,13 +27,22 @@ const Product = (props) => {
               <p className={styles.product_description_detail_price}>
                 ${product.price}
               </p>
-              <div>only {product.stock} is available in stock-order soon</div>
+              <div className={warning}>
+                {product.stock > 0
+                  ? `only ${product.stock} is available in stock-order soon`
+                  : "Out of Stock"}
+              </div>
               <button
                 className={styles.product_description_detail_button}
                 onClick={() => props.handleButton(props.product)}
+                disabled={product.stock <= 0}
               >
-                <FontAwesomeIcon icon={faShoppingCart} />
-                add to cart
+                {product.stock > 0 ? (
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                ) : (
+                  ""
+                )}
+                {buttonText}
               </button>
             </div>
             <div className={styles.product_description_ratings}>
