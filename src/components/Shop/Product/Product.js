@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Product.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const product = props.product;
@@ -18,7 +19,9 @@ const Product = (props) => {
           <img src={product.img} alt={product.catagory} />
         </div>
         <div className={styles.product_header}>
-          <div>{product.name}</div>
+          <div>
+            <Link to={`/product/${product.key}`}> {product.name}</Link>
+          </div>
           <div className={styles.product_header_seller}>
             by: {product.seller}
           </div>
@@ -32,18 +35,20 @@ const Product = (props) => {
                   ? `only ${product.stock} is available in stock-order soon`
                   : "Out of Stock"}
               </div>
-              <button
-                className={styles.product_description_detail_button}
-                onClick={() => props.handleButton(props.product)}
-                disabled={product.stock <= 0}
-              >
-                {product.stock > 0 ? (
-                  <FontAwesomeIcon icon={faShoppingCart} />
-                ) : (
-                  ""
-                )}
-                {buttonText}
-              </button>
+              {props.showAddToCartButton && (
+                <button
+                  className={styles.product_description_detail_button}
+                  onClick={() => props.handleButton(props.product)}
+                  disabled={product.stock <= 0}
+                >
+                  {product.stock > 0 ? (
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                  ) : (
+                    ""
+                  )}
+                  {buttonText}
+                </button>
+              )}
             </div>
             <div className={styles.product_description_ratings}>
               <div className={styles.product_description_ratings_star}></div>

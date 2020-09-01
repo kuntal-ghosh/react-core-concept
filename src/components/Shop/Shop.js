@@ -12,6 +12,7 @@ const Shop = () => {
 
   const [cartProducts, setCartProducts] = useState([]);
 
+  // showing cart products that are in the cart
   let cart;
   if (cartProducts !== undefined && cartProducts.length > 0) {
     cart = cartProducts.map((product) => (
@@ -27,6 +28,7 @@ const Shop = () => {
           {firstTenProducts.map((product) => (
             <Product
               key={product.key}
+              showAddToCartButton={true}
               product={product}
               handleButton={handleButton}
             ></Product>
@@ -38,6 +40,12 @@ const Shop = () => {
       </div>
     </Fragment>
   );
+
+  /**
+   *this function adds an item ti the cart 
+   *
+   * @param {product} product
+   */
   function handleButton(product) {
     console.log(product);
     const newCart = [...cartProducts, product];
