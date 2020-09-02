@@ -4,6 +4,7 @@ import styles from "./App.module.scss";
 import My from "./components/my";
 import Header from "./components/Header/Header";
 import Shop from "./components/Shop/Shop";
+// "bootstrap"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Order from "./components/Order/Order";
 import Inventory from "./components/Inventory/Inventory";
