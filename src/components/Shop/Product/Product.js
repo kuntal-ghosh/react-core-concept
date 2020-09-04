@@ -8,7 +8,7 @@ const Product = (props) => {
   const product = props.product;
   let warning;
   let buttonText = "add to cart";
-  if (product.stock <= 0) {
+  if (product && product.stock <= 0) {
     warning = styles.product_description_warning;
     buttonText = "Out of Stock";
   }
@@ -31,7 +31,7 @@ const Product = (props) => {
                 ${product.price}
               </p>
               <div className={warning}>
-                {product.stock > 0
+                {product && product.stock > 0
                   ? `only ${product.stock} is available in stock-order soon`
                   : "Out of Stock"}
               </div>

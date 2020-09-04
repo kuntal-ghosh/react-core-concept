@@ -1,9 +1,10 @@
 import React from "react";
 import logo from "../../images/logo.png";
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Shop from "../Shop/Shop";
 import Order from "../Order/Order";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -13,9 +14,9 @@ const Header = () => {
       </div>
 
       <nav className={styles.header_nav}>
-        <a href="/shop">Shop</a>
-        <a href="/order">Order Review</a>
-        <a href="/manage">Manage Inventary here</a>
+        <Link to="/shop">Shop</Link>
+        <Link to="/order">Order Review</Link>
+        <Link to="/manage">Manage Inventary here</Link>
       </nav>
     </div>
   );
