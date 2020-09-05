@@ -1,0 +1,18 @@
+.order {
+  &_container {
+    display: flex;
+
+    &_left {
+      flex: 1;
+    }
+
+    &_center {
+      flex: 4;
+    }
+
+    &_right {
+      flex: 1;
+      border-left: 1px dotted black;
+    }
+  }
+}

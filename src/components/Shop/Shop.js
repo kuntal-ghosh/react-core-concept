@@ -7,9 +7,9 @@ import { addToDatabaseCart } from "../../utilities/databaseManager";
 import { getDatabaseCart } from "../../utilities/databaseManager";
 
 const Shop = () => {
-  //   let data = fakeData;
+  let data = fakeData;
 
-  // console.log(fakeData);
+  console.log(fakeData);
   let first10 = fakeData.slice(0, 10);
   const [firstTenProducts, setFirstTenProducts] = useState(first10);
 
@@ -68,11 +68,26 @@ const Shop = () => {
    */
   function handleButton(product) {
     // console.log(product);
-    const newCart = [...cartProducts, product];
+    // finding same product in the cart
+    let sameProduct = cartProducts.find((p) => p.key === product.key);
+    let count = 1;
+    if (sameProduct) {
+      // if same product is found in the cart,then
+      count = sameProduct.quantity + 1;
+      product.quantity = count;
+      let cart = cartProducts.filter((p) => p.key !== product.key);
+      let newCart = [...cart, product];
+      setCartProducts(newCart);
+    } else {
+      // if the product is not in the cart
+      product.quantity = count;
+      const newCart = [...cartProducts, product];
+      setCartProducts(newCart);
+    }
+
     let products = [...firstTenProducts];
-    setCartProducts(newCart);
-    const count = newCart.filter((p) => p.key === product.key);
-    addToDatabaseCart(product.key, count.length);
+    // const count = newCart.filter((p) => p.key === product.key);
+    addToDatabaseCart(product.key, count);
 
     products.forEach((eachProduct) => {
       if (eachProduct.key === product.key) {
