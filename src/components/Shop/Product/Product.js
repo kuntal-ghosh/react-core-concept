@@ -3,6 +3,7 @@ import styles from "./Product.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Product = (props) => {
   const product = props.product;
@@ -31,9 +32,10 @@ const Product = (props) => {
                 ${product.price}
               </p>
               <div className={warning}>
-                {product && product.stock > 0
-                  ? `only ${product.stock} is available in stock-order soon`
-                  : "Out of Stock"}
+                {props.showStock &&
+                  (product && product.stock > 0
+                    ? `only ${product.stock} is available in stock-order soon`
+                    : "Out of Stock")}
               </div>
               {props.showAddToCartButton && (
                 <button
@@ -48,6 +50,14 @@ const Product = (props) => {
                   )}
                   {buttonText}
                 </button>
+              )}
+              {props.showRemoveButton && (
+                <Button
+                  className="btn btn-danger"
+                  onClick={() => props.onRemoveButton(props.product)}
+                >
+                  remove Item
+                </Button>
               )}
             </div>
             <div className={styles.product_description_ratings}>

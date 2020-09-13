@@ -21,7 +21,10 @@ const Cart = (props) => {
   console.log(cart);
   let totalProducts = cart.reduce((sum, product) => sum + product.quantity, 0);
 
-  let price = cart.reduce((sum, product) => sum + product.price, 0);
+  let price = cart.reduce(
+    (sum, product) => sum + product.price * product.quantity,
+    0
+  );
   console.log(price);
 
   let shippingCost = cart.reduce((sum, product) => sum + product.shipping, 0);

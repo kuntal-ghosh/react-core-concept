@@ -8,6 +8,15 @@
 
     &_center {
       flex: 4;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      Button {
+        display: inline-block;
+        text-align: center;
+        width: 150px;
+      }
     }
 
     &_right {

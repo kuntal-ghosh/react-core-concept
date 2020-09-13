@@ -1,29 +1,55 @@
 .header {
+  text-align: center;
+
+  img {
+    width: 200px;
+  }
+
+  &_text {
+    color: red;
+  }
+
+  &_nav {
+    background-color: black;
+    // padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_link {
+      height: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 15px;
+      color: white;
+    }
+
+    a:hover {
+      // background-color: gray;
+      color: darken($color: white, $amount: 10px);
+      text-decoration: none;
+    }
+
+    .button {
+      &_nav_dropdown {
+        &_item {
+          color: black !important;
+        }
+      }
+    }
+  }
+}
+
+.button_nav_dropdown_item {
+  color: black !important;
+  text-align: center !important;
+  a {
     text-align: center;
+  }
+}
 
-    img {
-        width: 200px;
-
-    }
-
-
-    &_text {
-        color: red;
-    }
-
-    &_nav {
-        background-color: black;
-        padding: 15px;
-
-        a {
-            text-decoration: none;
-            padding: 15px;
-            color: white;
-
-        }
-
-        a:hover {
-            background-color: gray;
-        }
-    }
+.button_img {
+  display: inline-block;
 }

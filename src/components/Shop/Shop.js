@@ -4,9 +4,12 @@ import Product from "./Product/Product";
 import Styles from "./Shop.module.scss";
 import Cart from "./Cart/Cart";
 import { addToDatabaseCart } from "../../utilities/databaseManager";
-import { getDatabaseCart } from "../../utilities/databaseManager";
+import {
+  getDatabaseCart,
+  removeFromDatabaseCart,
+} from "../../utilities/databaseManager";
 
-const Shop = () => {
+const Shop = (props) => {
   let data = fakeData;
 
   console.log(fakeData);
@@ -39,7 +42,8 @@ const Shop = () => {
   //     <Product key={product.key} product={product}></Product>
   //   ));
   // }
-
+  // console.log("props");
+  // console.log(props);
   return (
     <Fragment>
       <div className={Styles.shop_container}>
@@ -49,8 +53,10 @@ const Shop = () => {
             <Product
               key={product.key}
               showAddToCartButton={true}
+              showRemoveButton={false}
               product={product}
               handleButton={handleButton}
+              showStock={true}
             ></Product>
           ))}
         </div>

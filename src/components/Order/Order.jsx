@@ -3,6 +3,11 @@ import { getDatabaseCart } from "../../utilities/databaseManager";
 import fakeData from "../../fakeData/index";
 import Cart from "../Shop/Cart/Cart";
 import style from "./Order.module.scss";
+import Product from "../../components/Shop/Product/Product";
+import { Button } from "react-bootstrap";
+import { removeFromDatabaseCart } from "../../utilities/databaseManager";
+import { addToDatabaseCart } from "../../utilities/databaseManager";
+
 // import cx from "ClassName";
 const Order = () => {
   // console.log("cart");
@@ -76,7 +81,20 @@ const Order = () => {
 
         <div className={style.order_container}>
           <div className={style.order_container_left}></div>
-          <div className={style.order_container_center}></div>
+          <div className={style.order_container_center}>
+            {cart.map((product) => (
+              <>
+                <Product
+                  key={product.key}
+                  showAddToCartButton={false}
+                  onRemoveButton={handleRemoveButton}
+                  showRemoveButton={true}
+                  product={product}
+                  showStock={false}
+                ></Product>
+              </>
+            ))}
+          </div>
           <div className={style.order_container_right}>
             <Cart cart={cart}></Cart>
           </div>
@@ -84,6 +102,20 @@ const Order = () => {
       }
     </>
   );
+  function handleRemoveButton(product) {
+    let productInCart = cart.find((p) => p.key === product.key);
+    let newCart = cart.filter((p) => p.key !== product.key);
+
+    if (productInCart && productInCart.quantity > 1) {
+      productInCart.quantity = productInCart.quantity - 1;
+      addToDatabaseCart(product.key, productInCart.quantity);
+      let newCartWithProductInCart = [...newCart, productInCart];
+      setCart(newCartWithProductInCart);
+    } else {
+      removeFromDatabaseCart(product.key);
+      setCart(newCart);
+    }
+  }
 };
 
 export default Order;

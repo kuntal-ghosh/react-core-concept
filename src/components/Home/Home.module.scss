@@ -1,0 +1,31 @@
+.home {
+  &_container {
+    h2 {
+    }
+    input[type="text"],
+    input[type="password"] {
+      margin-top: 15px;
+      width: 50%;
+      height: 2.5rem;
+      &:focus {
+        outline: none;
+      }
+    }
+    input[type="submit"] {
+      // background-color: gradient(red, tomato);
+      // width: 100%;
+      margin-top: 1rem;
+      padding: 0.7rem 2rem;
+      border-radius: 5px;
+      background-image: linear-gradient(to bottom, red, tomato);
+      color: white;
+      transition: background-image 2s;
+    }
+    input[type="submit"]:hover {
+      background-image: linear-gradient(
+        lighten(red, 10px),
+        lighten(tomato, 10px)
+      );
+    }
+  }
+}
